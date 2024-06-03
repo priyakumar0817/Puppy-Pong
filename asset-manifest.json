@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Puppy-Pong/static/css/main.32b1ae53.css",
+    "main.js": "/Puppy-Pong/static/js/main.8f4a53d3.js",
+    "static/js/453.cd033872.chunk.js": "/Puppy-Pong/static/js/453.cd033872.chunk.js",
+    "static/media/background.png": "/Puppy-Pong/static/media/background.12cd9d358a563acd7301.png",
+    "index.html": "/Puppy-Pong/index.html",
+    "main.32b1ae53.css.map": "/Puppy-Pong/static/css/main.32b1ae53.css.map",
+    "main.8f4a53d3.js.map": "/Puppy-Pong/static/js/main.8f4a53d3.js.map",
+    "453.cd033872.chunk.js.map": "/Puppy-Pong/static/js/453.cd033872.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.32b1ae53.css",
+    "static/js/main.8f4a53d3.js"
+  ]
+}
