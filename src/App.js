@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Modernizr from 'modernizr';
 import './App.css';
 
 function App() {
@@ -12,15 +13,15 @@ function App() {
 
   useEffect(() => {
     startInterval();
-    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener(Modernizr.touch ? 'touchmove' : 'mousemove', handleMouseMove);
     return () => {
       clearInterval(intervalRef.current);
-      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener(Modernizr.touch ? 'touchmove' : 'mousemove', handleMouseMove);
     };
   }, []);
 
   const handleMouseMove = (e) => {
-    mouseX = e.clientX;
+    mouseX = Modernizr.touch ? e.touches[0].clientX : e.clientX;
     const mouseElement = mouseRef.current;
     if (mouseElement) {
       mouseElement.style.left = Math.max(0, Math.min(mouseX - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
