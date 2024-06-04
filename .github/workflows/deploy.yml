@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  job-name:
-    permissions:
-      contents: write
   deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
         run: npm run build  # or yarn build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4.1.4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
