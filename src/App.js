@@ -65,11 +65,18 @@ function App() {
     const mouse = parseFloat(mouseRef.current.style.left.slice(0, -2));
     const mouseElement = mouseRef.current;
     const imgElement = imgRef.current;
+  
     if (imgElement && mouseElement) {
+      const imgBottom = imgY + imgElement.offsetHeight;
+      const paddleTop = window.innerHeight - mouseElement.offsetHeight;
+      const paddleLeft = mouse;
+      const paddleRight = mouse + mouseElement.offsetWidth;
+  
       if (
-        imgY === window.innerHeight - imgElement.offsetHeight - mouseElement.offsetHeight &&
-        imgX < mouse + mouseElement.offsetWidth &&
-        imgX > mouse - mouseElement.offsetWidth
+        imgBottom >= paddleTop &&
+        imgY < paddleTop &&
+        imgX + imgElement.offsetWidth > paddleLeft &&
+        imgX < paddleRight
       ) {
         theDeltaY *= -1;
         setCounter(prevCounter => prevCounter + 1);
@@ -79,6 +86,7 @@ function App() {
       }
     }
   };
+  
 
   const startInterval = () => {
     intervalRef.current = setInterval(() => {
