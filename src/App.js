@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Modernizr from 'modernizr';
 import './App.css';
 
 function App() {
@@ -13,21 +12,35 @@ function App() {
 
   useEffect(() => {
     startInterval();
-    document.addEventListener(Modernizr.touch ? 'touchmove' : 'mousemove', handleMouseMove);
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX;
+      const mouseElement = mouseRef.current;
+      if (mouseElement) {
+        mouseElement.style.left = Math.max(0, Math.min(mouseX - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
+        mouseElement.style.visibility = 'visible';
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      if (e.touches.length > 0) {
+        mouseX = e.touches[0].clientX;
+        const mouseElement = mouseRef.current;
+        if (mouseElement) {
+          mouseElement.style.left = Math.max(0, Math.min(mouseX - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
+          mouseElement.style.visibility = 'visible';
+        }
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('touchmove', handleTouchMove);
+
     return () => {
       clearInterval(intervalRef.current);
-      document.removeEventListener(Modernizr.touch ? 'touchmove' : 'mousemove', handleMouseMove);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
-
-  const handleMouseMove = (e) => {
-    mouseX = Modernizr.touch ? e.touches[0].clientX : e.clientX;
-    const mouseElement = mouseRef.current;
-    if (mouseElement) {
-      mouseElement.style.left = Math.max(0, Math.min(mouseX - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
-      mouseElement.style.visibility = 'visible';
-    }
-  };
 
   const updateX = () => {
     imgX += theDeltaX;
@@ -48,17 +61,19 @@ function App() {
       }
     }
   };
-
   const updateBrowserSize = () => {
     const mouse = parseFloat(mouseRef.current.style.left.slice(0, -2));
     const mouseElement = mouseRef.current;
     const imgElement = imgRef.current;
     if (imgElement && mouseElement) {
-      if (imgY === (document.body.offsetHeight - imgElement.offsetHeight - mouseElement.offsetHeight)
-        && imgX < (mouse + mouseElement.offsetWidth) && imgX > (mouse - mouseElement.offsetWidth)) {
+      if (
+        imgY === window.innerHeight - imgElement.offsetHeight - mouseElement.offsetHeight &&
+        imgX < mouse + mouseElement.offsetWidth &&
+        imgX > mouse - mouseElement.offsetWidth
+      ) {
         theDeltaY *= -1;
-        setCounter((prevCounter) => prevCounter + 1);
-      } else if (imgY > (document.body.offsetHeight - imgElement.offsetHeight)) {
+        setCounter(prevCounter => prevCounter + 1);
+      } else if (imgY > window.innerHeight - imgElement.offsetHeight) {
         setGameOver(true);
         stopInterval();
       }
@@ -91,17 +106,16 @@ function App() {
       <img ref={imgRef} src="https://source.unsplash.com/random/300x200?puppy" alt="Puppy Pong" />
       <div ref={mouseRef} className="mouseMove"></div>
       <div className="press-start-2p-regular">
-      <div className="containerStyle">
-        
+        <div className="containerStyle">
           {gameOver ? `GAME OVER! TOTAL SCORE: ${counter}` : `SCORE: ${counter}`}
         </div>
       </div>
-        <button
-          onClick={resetGame}
-          className="resetButton"
-        >
-          RESET
-        </button>
+      <button
+        onClick={resetGame}
+        className="resetButton"
+      >
+        RESET
+      </button>
     </div>
   );
 }

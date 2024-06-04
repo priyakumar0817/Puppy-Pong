@@ -24,17 +24,16 @@
   border: none;
   border-radius: 20px;
   position: fixed;
-  right: 20px; /* Adjust the value to set the desired distance from the right side */
+  right: 20px;
   top: 10%;
   cursor: pointer;
-}
-.resetButton:hover {
-  background-color: grey;
+  color: black;
 }
 body {
   background-image: url('../public/background.png');
   margin: 0;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 img {
@@ -50,8 +49,23 @@ img {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 50vmin;
+  width: 40vmin;
   aspect-ratio: 45 / 2;
   background-color: rgb(126, 146, 157);
-  visibility: hidden;
+}
+@media screen and (max-width: 480px) {
+  .containerStyle, .resetButton {
+    font-size: 12px;
+  }
+  .resetButton {
+    top: 15%;
+  }
+  .mouseMove {
+    aspect-ratio: 30 / 2;
+  }
+}
+@media (hover: hover) {
+  .resetButton:hover {
+    background-color: grey;
+  }
 }
