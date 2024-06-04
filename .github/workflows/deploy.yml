@@ -6,6 +6,9 @@ on:
       - main
 
 jobs:
+  job-name:
+    permissions:
+      contents: write
   deploy:
     runs-on: ubuntu-latest
 
