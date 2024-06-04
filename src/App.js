@@ -7,26 +7,27 @@ function App() {
   const imgRef = useRef(null);
   const mouseRef = useRef(null);
   const intervalRef = useRef(null);
+  const mouseX = useRef(0); // Store mouseX value using useRef
 
-  let imgX = 0, imgY = 0, mouseX = 0, theDeltaX = 1, theDeltaY = 1;
+  let imgX = 0, imgY = 0, theDeltaX = 1, theDeltaY = 1;
 
   useEffect(() => {
     startInterval();
     const handleMouseMove = (e) => {
-      mouseX = e.clientX;
+      mouseX.current = e.clientX; // Update mouseX using useRef
       const mouseElement = mouseRef.current;
       if (mouseElement) {
-        mouseElement.style.left = Math.max(0, Math.min(mouseX - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
+        mouseElement.style.left = Math.max(0, Math.min(mouseX.current - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
         mouseElement.style.visibility = 'visible';
       }
     };
 
     const handleTouchMove = (e) => {
       if (e.touches.length > 0) {
-        mouseX = e.touches[0].clientX;
+        mouseX.current = e.touches[0].clientX; // Update mouseX using useRef
         const mouseElement = mouseRef.current;
         if (mouseElement) {
-          mouseElement.style.left = Math.max(0, Math.min(mouseX - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
+          mouseElement.style.left = Math.max(0, Math.min(mouseX.current - mouseElement.offsetWidth / 2, window.innerWidth - mouseElement.offsetWidth)) + "px";
           mouseElement.style.visibility = 'visible';
         }
       }
