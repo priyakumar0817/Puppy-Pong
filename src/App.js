@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
-
+import dog from './dog.png';
+import trampoline from "./trampoline.png";
 function App() {
   const [counter, setCounter] = useState(0);
   const [gameOver, setGameOver] = useState(false);
@@ -110,8 +111,8 @@ function App() {
   };
   return (
     <div className="App">
-      <img ref={imgRef} src="https://source.unsplash.com/random/300x200?puppy" alt="Puppy Pong" onLoad={startInterval}/>
-      <div ref={mouseRef} className="mouseMove"></div>
+      <img ref={imgRef} src={dog} alt="Puppy Pong" className = "puppyImg" onLoad={startInterval}/>
+      <img ref={mouseRef} src = {trampoline} alt="Trampoline" className="mouseMove"/>
       <div className="press-start-2p-regular">
         <div className="containerStyle">
           {gameOver ? `GAME OVER! TOTAL SCORE: ${counter}` : `SCORE: ${counter}`}

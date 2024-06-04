@@ -36,23 +36,20 @@ body {
   overflow: hidden;
 }
 
-img {
+.puppyImg {
   position: absolute;
-  top: 5px;
   left: 5px;
   width: 50vmin;
   aspect-ratio: 3 / 2;
   object-fit: contain;
 }
 
-.mouseMove {
+ .mouseMove {
   position: absolute;
-  left: 0;
   bottom: 0;
   width: 40vmin;
-  aspect-ratio: 45 / 2;
-  background-color: rgb(126, 146, 157);
-}
+  object-fit: contain;
+} 
 @media screen and (max-width: 480px) {
   .containerStyle, .resetButton {
     font-size: 12px;
@@ -60,9 +57,7 @@ img {
   .resetButton {
     top: 15%;
   }
-  .mouseMove {
-    aspect-ratio: 30 / 2;
-  }
+
 }
 @media (hover: hover) {
   .resetButton:hover {
