@@ -10,9 +10,8 @@ function App() {
   const mouseX = useRef(0); // Store mouseX value using useRef
 
   let imgX = 0, imgY = 0, theDeltaX = 1, theDeltaY = 1;
-
   useEffect(() => {
-    startInterval();
+    //startInterval();
     const handleMouseMove = (e) => {
       mouseX.current = e.clientX; // Update mouseX using useRef
       const mouseElement = mouseRef.current;
@@ -41,7 +40,7 @@ function App() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [startInterval]);
+  }, []);
 
   const updateX = () => {
     imgX += theDeltaX;
@@ -101,10 +100,9 @@ function App() {
     setGameOver(false);
     startInterval();
   };
-
   return (
     <div className="App">
-      <img ref={imgRef} src="https://source.unsplash.com/random/300x200?puppy" alt="Puppy Pong" />
+      <img ref={imgRef} src="https://source.unsplash.com/random/300x200?puppy" alt="Puppy Pong" onLoad={startInterval}/>
       <div ref={mouseRef} className="mouseMove"></div>
       <div className="press-start-2p-regular">
         <div className="containerStyle">
