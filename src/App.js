@@ -41,7 +41,7 @@ function App() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('touchmove', handleTouchMove);
     };
-  }, []);
+  }, [startInterval]);
 
   const updateX = () => {
     imgX += theDeltaX;
