@@ -35,20 +35,19 @@ body {
   min-height: 100vh;
   overflow: hidden;
 }
-
-.puppyImg {
+img {
   position: absolute;
-  left: 5px;
-  width: 50vmin;
+  width: 30vmin;
   aspect-ratio: 3 / 2;
   object-fit: contain;
 }
+.puppyImg {
+  left: 5px;
+}
 
  .mouseMove {
-  position: absolute;
   bottom: 0;
-  width: 40vmin;
-  object-fit: contain;
+  width: 20vmin;
 } 
 @media screen and (max-width: 480px) {
   .containerStyle, .resetButton {
