@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Puppy-Pong/static/css/main.430396fe.css",
+    "main.css": "/Puppy-Pong/static/css/main.cf3f2e4d.css",
     "main.js": "/Puppy-Pong/static/js/main.5ff3e047.js",
     "static/js/453.cd033872.chunk.js": "/Puppy-Pong/static/js/453.cd033872.chunk.js",
     "static/media/background.png": "/Puppy-Pong/static/media/background.12cd9d358a563acd7301.png",
     "static/media/trampoline.png": "/Puppy-Pong/static/media/trampoline.0c2a64fc7a1a8a8be7de.png",
     "static/media/dog.png": "/Puppy-Pong/static/media/dog.3fc27686fa5ae166fae7.png",
     "index.html": "/Puppy-Pong/index.html",
-    "main.430396fe.css.map": "/Puppy-Pong/static/css/main.430396fe.css.map",
+    "main.cf3f2e4d.css.map": "/Puppy-Pong/static/css/main.cf3f2e4d.css.map",
     "main.5ff3e047.js.map": "/Puppy-Pong/static/js/main.5ff3e047.js.map",
     "453.cd033872.chunk.js.map": "/Puppy-Pong/static/js/453.cd033872.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.430396fe.css",
+    "static/css/main.cf3f2e4d.css",
     "static/js/main.5ff3e047.js"
   ]
 }
